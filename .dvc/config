@@ -1,0 +1,4 @@
+[core]
+    remote = origin
+['remote "origin"']
+    url = https://dagshub.com/CarlosMartinezCuenca/mlops-practica-icai.dvc
