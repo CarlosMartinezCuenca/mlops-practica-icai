@@ -12,6 +12,7 @@ import seaborn as sns
 
 
 # dagshub.init(repo_owner="CarlosMartinezCuenca", repo_name="mlops-practica-icai", mlflow=True)
+#
 
 tracking_uri = os.environ.get("MLFLOW_TRACKING_URI")
 mlflow.set_tracking_uri(tracking_uri)
