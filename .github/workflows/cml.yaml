@@ -16,8 +16,8 @@ jobs:
           python-version: '3.11'
       - name: Configure Git
         run: |
-          git config --global user.email "TUEMAIL"
-          git config --global user.name "TUUSUARIO"
+          git config --global user.email "carlos.martinez.cuenca04@gmail.com"
+          git config --global user.name "CarlosMartinezCuenca"
       - name: Restore DVC Cache
         uses: actions/cache@v3
         with:
