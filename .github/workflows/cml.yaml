@@ -94,10 +94,15 @@ jobs:
         run: |
           gcloud auth configure-docker
 
-      - name: Build and push Docker image
+      - name : Build and Push API Docker Image
         run: |
           docker build -t gcr.io/${{ vars.GCP_PROJECT_ID }}/mlops-api:latest .
           docker push gcr.io/${{ vars.GCP_PROJECT_ID }}/mlops-api:latest
+      
+      - name : Build and Push Web Docker Image
+        run: |
+          docker build -t gcr.io/${{ vars.GCP_PROJECT_ID }}/mlops-web:latest -f Dockerfile.web .
+          docker push gcr.io/${{ vars.GCP_PROJECT_ID }}/mlops-web:latest
 
       - name: Deploy to GKE
         run: |
@@ -105,13 +110,3 @@ jobs:
           kubectl apply -f api-service.yaml
           kubectl apply -f web-deployment.yaml
           kubectl apply -f web-service.yaml
-      
-      - name : Build and Push API Docker Image
-        run: |
-          docker build -t gcr.io/${{ vars.GCP_PROJECT_ID }}/mlops-api:latest .
-          docker push gcr.io/${{ vars.GCP_PROJECT_ID }}/mlops-api:latest
-
-      - name : Build and Push Web Docker Image
-        run: |
-          docker build -t gcr.io/${{ vars.GCP_PROJECT_ID }}/mlops-web:latest -f Dockerfile.web .
-          docker push gcr.io/${{ vars.GCP_PROJECT_ID }}/mlops-web:latest

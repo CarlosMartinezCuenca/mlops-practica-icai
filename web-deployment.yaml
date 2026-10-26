@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: mlops-web
-          image: gcr.io/kubernetes-mlops-511106/mlops-api:latest
+          image: gcr.io/kubernetes-mlops-511106/mlops-web:latest
           ports:
             - containerPort: 8501
           env:
