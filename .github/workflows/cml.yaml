@@ -105,8 +105,6 @@ jobs:
           kubectl apply -f api-service.yaml
           kubectl apply -f web-deployment.yaml
           kubectl apply -f web-service.yaml
-        run: |
-          gcloud auth configure-docker
       
       - name : Build and Push API Docker Image
         run: |
