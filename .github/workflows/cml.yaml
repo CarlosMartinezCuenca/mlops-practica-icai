@@ -101,5 +101,19 @@ jobs:
 
       - name: Deploy to GKE
         run: |
-          kubectl apply -f deployment.yaml
-          kubectl apply -f service.yaml
+          kubectl apply -f api-deployment.yaml
+          kubectl apply -f api-service.yaml
+          kubectl apply -f web-deployment.yaml
+          kubectl apply -f web-service.yaml
+        run: |
+          gcloud auth configure-docker
+      
+      - name : Build and Push API Docker Image
+        run: |
+          docker build -t gcr.io/${{ vars.GCP_PROJECT_ID }}/mlops-api:latest .
+          docker push gcr.io/${{ vars.GCP_PROJECT_ID }}/mlops-api:latest
+
+      - name : Build and Push Web Docker Image
+        run: |
+          docker build -t gcr.io/${{ vars.GCP_PROJECT_ID }}/mlops-web:latest -f Dockerfile.web .
+          docker push gcr.io/${{ vars.GCP_PROJECT_ID }}/mlops-web:latest
