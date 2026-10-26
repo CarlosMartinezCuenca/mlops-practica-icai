@@ -9,6 +9,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: DVC and Python setup
+        uses: iterative/setup-dvc@v1
       - name: Install CML manually
         run: |
           pip install -g @dvcorg/cml  
@@ -75,7 +76,7 @@ jobs:
         
       - name: Get GKE credentials
         run: |
-          gcloud container clusters get-credentials ${{ vars.GKE_CLUSTER_NAME }} --zone ${{ vars.GKE_CLUSTER_ZONE }} --project ${{ vars.GCP_PROJECT_ID }}
+          gcloud container clusters get-credentials ${{ vars.GKE_CLUSTER }} --zone ${{ vars.GKE_ZONE }} --project ${{ vars.GCP_PROJECT_ID }}
 
       - name: DVC Pull
         env:
