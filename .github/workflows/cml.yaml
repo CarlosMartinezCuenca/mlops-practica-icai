@@ -12,7 +12,7 @@ jobs:
         uses: iterative/setup-dvc@v1
       - name: Install CML manually
         run: |
-          pip install -g @dvcorg/cml  
+          npm install -g @dvcorg/cml  
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
