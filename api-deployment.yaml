@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: mlops-api
-          image: gcr.io/kubernetes-mlops-511106/mlops-api:latest
+          image: gcr.io/mlops-514517/mlops-api:latest
           ports:
             - containerPort: 5000
