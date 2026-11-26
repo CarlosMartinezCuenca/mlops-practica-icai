@@ -54,6 +54,8 @@ jobs:
   deploy-to-gke:
     needs: train-and-report
     runs-on: ubuntu-latest
+    env:
+      CLOUDSDK_CONTAINER_USE_APPLICATION_DEFAULT_CREDENTIALS: 'true'
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -71,7 +73,7 @@ jobs:
       - name : Set up gcloud CLI and kubectl
         uses: 'google-github-actions/setup-gcloud@v2'
         with:
-          version: 'latest'
+          version: '570.0.0'
           install_components: 'gke-gcloud-auth-plugin'
         
       - name: Get GKE credentials
